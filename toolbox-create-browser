@@ -14,11 +14,10 @@ $run sudo dnf -y upgrade
 
 $run sudo dnf install -y \
  chromium \
- ~/Downloads/google-chrome-stable_current_x86_64.rpm
+ ~/Downloads/google-chrome-*.rpm 
  
 echo "## Creating browser config directori"
-echo "## For start param --user-data-dir='/home/google/config/' "
-echo "## and --disk-cache-dir='/home/google/cache'" 
+echo "## For start param: google-chrome-stable --user-data-dir='/home/google/config/' --disk-cache-dir='/home/google/cache'" 
 	
 $run sudo mkdir -p /home/google/config	
 $run sudo mkdir -p /home/google/cache
@@ -29,9 +28,9 @@ $run sudo chown $USER:$USER -R /home/google/cache
 $run ls -la /home/google/
 
 
+
 echo "## Done!"
 echo "## Created $name_container !"
 echo "##### $name_container container entrance #####"
 
 $run /usr/bin/bash
-
