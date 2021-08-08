@@ -1,0 +1,36 @@
+#!/bin/sh -e
+
+name_container=$1
+
+
+echo "## Creating $name_container container..."
+toolbox create -c $name_container -r 34
+
+run="toolbox run -c $name_container"
+
+echo "## Installing $name_container container..."
+
+$run sudo dnf -y upgrade
+
+$run sudo dnf install -y \
+ chromium \
+ ~/Downloads/google-chrome-stable_current_x86_64.rpm
+ 
+echo "## Creating browser config directori"
+echo "## For start param --user-data-dir='/home/google/config/' "
+echo "## and --disk-cache-dir='/home/google/cache'" 
+	
+$run sudo mkdir -p /home/google/config	
+$run sudo mkdir -p /home/google/cache
+
+$run sudo chown $USER:$USER -R /home/google/config
+$run sudo chown $USER:$USER -R /home/google/cache
+
+$run ls -la /home/google/
+
+
+echo "## Done!"
+echo "## Created $name_container !"
+
+$run /usr/bin/bash
+
