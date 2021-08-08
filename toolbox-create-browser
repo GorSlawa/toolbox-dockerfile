@@ -31,6 +31,7 @@ $run ls -la /home/google/
 
 echo "## Done!"
 echo "## Created $name_container !"
+echo "##### $name_container container entrance #####"
 
 $run /usr/bin/bash
 
